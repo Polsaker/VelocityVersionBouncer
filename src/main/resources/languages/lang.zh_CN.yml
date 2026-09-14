@@ -5,6 +5,8 @@ config-load-error: "无法加载 config.toml 文件 - 请检查错误: {0}"
 
 # KickedFromServerListener
 fallback-bouncing: "[ 备用服务器 - 跳转中 ]"
+fallback-disabled: "已禁用 {0} 的备用服务器跳转。"
+server-connect-failed: "无法连接到服务器 {0}。"
 connecting: "正在连接到: {0}"
 no-matching-server-args: "{0}\n且没有游戏版本匹配的后端服务器可用. "
 no-matching-server: "没有游戏版本匹配的后端服务器可用. "

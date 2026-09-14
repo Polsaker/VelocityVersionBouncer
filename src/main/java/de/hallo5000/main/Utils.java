@@ -59,6 +59,12 @@ public class Utils {
         });
     }
 
+    public boolean isFallbackOnConnectFailureEnabled(RegisteredServer server){
+        Object configuredValue = plugin.getToml().getTable("fallback-on-connect-failure").toMap()
+                .get(server.getServerInfo().getName());
+        return !(configuredValue instanceof Boolean enabled) || enabled;
+    }
+
     /**
      * Gets all explicit routings from the plugins config.yml and searches for matching routings (may not be in order)
      * @param inboundConnection the client whose protocol to compare the explicit routings to
@@ -229,6 +235,8 @@ public class Utils {
                 }catch(IOException ex){
                     plugin.getLogger().info(plugin.getMessage("server-unreachable"));
                     plugin.getBackendPingService().removePing(finalServer);
+                    if(!isFallbackOnConnectFailureEnabled(finalServer))
+                        return null;
                     matches.remove(finalServer);
                 }
             }

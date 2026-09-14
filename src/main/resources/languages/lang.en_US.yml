@@ -5,6 +5,8 @@ config-load-error: "Could not load config.toml file - Please check for errors {0
 
 # KickedFromServerListener
 fallback-bouncing: "[FALLBACK-bouncing]"
+fallback-disabled: "Fallback for {0} is disabled."
+server-connect-failed: "Unable to connect to server {0}."
 connecting: "Connects to: {0}"
 no-matching-server-args: "{0}\nand there is no fallback server with a matching game version available."
 no-matching-server: "There is no fallback server with a matching game version available."

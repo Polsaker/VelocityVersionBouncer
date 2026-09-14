@@ -84,4 +84,9 @@ explicit-fallback-server = "lobby"
 # Example: v1_21_8cFORGE = "lobby-1"
 # Example: p123 = "lobby-2"
 # Example: cGeyser = "GeyserMC-server"
+
+# Controls fallback behavior when a selected server disconnects or rejects a player.
+# Servers not listed here default to true, preserving the normal fallback behavior.
+[fallback-on-connect-failure]
+lobby1 = false
 ```

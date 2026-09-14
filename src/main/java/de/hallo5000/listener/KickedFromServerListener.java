@@ -19,6 +19,17 @@ public class KickedFromServerListener {
 
     @Subscribe
     public void onPlayerKick(KickedFromServerEvent e, Continuation continuation){
+        if(!plugin.getUtils().isFallbackOnConnectFailureEnabled(e.getServer())){
+            if(e.getResult() instanceof KickedFromServerEvent.RedirectPlayer redirect){
+                Component reason = redirect.getMessageComponent();
+                if(reason == null) reason = e.getServerKickReason().orElseGet(() -> Component.text(plugin.getMessage(
+                        "server-connect-failed", e.getServer().getServerInfo().getName())));
+                e.setResult(KickedFromServerEvent.DisconnectPlayer.create(reason));
+            }
+            plugin.getLogger().info(plugin.getMessage("fallback-disabled", e.getServer().getServerInfo().getName()));
+            continuation.resume();
+            return;
+        }
         plugin.getLogger().info(plugin.getMessage("fallback-bouncing"));
         if(plugin.getToml().getBoolean("enable-fallback-bouncing")){
             if(plugin.getToml().getString("explicit-fallback-server").equalsIgnoreCase("")){ //there is no explicit fallback server

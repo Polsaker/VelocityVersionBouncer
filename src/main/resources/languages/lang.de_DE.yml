@@ -5,6 +5,8 @@ config-load-error: "config.toml-Datei konnte nicht geladen werden - Bitte prüfe
 
 # KickedFromServerListener
 fallback-bouncing: "[FALLBACK-bouncing]"
+fallback-disabled: "Fallback für {0} ist deaktiviert."
+server-connect-failed: "Verbindung zum Server {0} fehlgeschlagen."
 connecting: "Verbindet mit: {0}"
 no-matching-server-args: "{0}\nund es ist kein Ausweich-Server mit passender Spielversion verfügbar."
 no-matching-server: "Es ist kein Ausweich-Server mit passender Spielversion verfügbar."
